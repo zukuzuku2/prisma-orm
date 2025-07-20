@@ -21,3 +21,8 @@ model Tipo_Producto {
         id_tipo_producto Int    @id @default(autoincrement())
         descripcion      String
 }
+
+model Pedido {
+        id_pedido    Int      @id @default(autoincrement())
+        fecha_pedido DateTime
+}
