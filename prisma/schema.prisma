@@ -12,7 +12,12 @@ datasource db {
 }
 
 model Producto {
-        id_producto Int @id @default(autoincrement())
-        nombre      String?
+        id_producto Int    @id @default(autoincrement())
+        nombre      String
         existencias Int
+}
+
+model Tipo_Producto {
+        id_tipo_producto Int    @id @default(autoincrement())
+        descripcion      String
 }
