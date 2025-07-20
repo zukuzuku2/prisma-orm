@@ -12,9 +12,10 @@ datasource db {
 }
 
 model Producto {
-        id_producto Int    @id @default(autoincrement())
-        nombre      String
-        existencias Int
+        id_producto         Int                   @id @default(autoincrement())
+        nombre              String
+        existencias         Int
+        rel_pedido_producto rel_pedido_producto[]
 }
 
 model Tipo_Producto {
@@ -23,6 +24,16 @@ model Tipo_Producto {
 }
 
 model Pedido {
-        id_pedido    Int      @id @default(autoincrement())
-        fecha_pedido DateTime
+        id_pedido           Int                   @id @default(autoincrement())
+        fecha_pedido        DateTime
+        rel_pedido_producto rel_pedido_producto[]
+}
+
+model rel_pedido_producto {
+        id_rel      Int      @id @default(autoincrement())
+        id_pedido   Int
+        id_producto Int
+        pedido      Pedido   @relation(fields: [id_pedido], references: [id_pedido])
+        producto    Producto @relation(fields: [id_producto], references: [id_producto])
+        cantidad    Int
 }
